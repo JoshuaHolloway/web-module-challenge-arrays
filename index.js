@@ -32,7 +32,8 @@ var originalFlavors = ["Banana Nut Fudge",
 
 /* Task 1: Confirm that the array is exactly 31 flavors. Your function should accept:
 
-(1) an array 
+(1) an array
+ 
 
 Your function should return a boolean TRUE if the length of the array is 31 and FALSE if the length of the array is NOT 31.
 
@@ -40,11 +41,12 @@ To save you from having to count the items above, you can assume that length of 
 
 i.e. is31Flavors(originalFlavors) will return TRUE.*/
 
-function is31Flavors(/*code here*/){
-
-    /*code here*/
-
-}
+const is31Flavors = (arr) => {
+    const len = arr.length;
+    const expected_num_flavors = 31;
+    if (len == expected_num_flavors)    return true;
+    else                                return false;
+};
 
 /* Task 2: Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
 
