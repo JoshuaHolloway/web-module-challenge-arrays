@@ -110,11 +110,18 @@ Hint: You can use .splice() for this
 
 */
 
-function removeFlavorByName(/*code here*/){
+const removeFlavorByName = (arr, value) => {
+    
+    // Get the index corresponding to the value:
+    const index = arr.indexOf(value);
+    console.log(`index = ${index}`);
 
-    /*code here*/
-
-}
+    // Remove the element corresponding to index from the array:
+    const num_elems_to_remove = 1;
+    arr.splice(index, num_elems_to_remove);
+    console.log(arr);
+};
+removeFlavorByName(originalFlavors, "Strawberry");
 
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
