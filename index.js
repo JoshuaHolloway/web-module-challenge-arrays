@@ -1,4 +1,4 @@
-var originalFlavors = ["Banana Nut Fudge",
+const originalFlavors = ["Banana Nut Fudge",
     "Black Walnut",
     "Burgundy Cherry",
    "Butterscotch Ribbon",
@@ -64,7 +64,7 @@ Your function should add the flavor to the front of the array and console.log th
 For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"] */ 
 
 console.log('---------Question 2:---------');
-const addFlavor = ((new_flavor, arr) =>{
+const addFlavor = ((new_flavor, arr) => {
     arr.unshift(new_flavor);
     console.log(arr);
     console.log(`new array length: ${arr.length}`);
@@ -239,7 +239,7 @@ and should return a new array called randomFlavors with a length 31.
 forExample, getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors) might return ["Strawberry Cheesecake", "Eggnog,"..."Chocolate"].*/
 
 // Data ⬇️
-var newFlavors = ["Date night",
+const newFlavors = ["Date night",
     "U.S.S Butterscotch (Stranger Things special)",
     "Honey Almond",
     "Mint Chocolate Chip",
@@ -262,7 +262,7 @@ var newFlavors = ["Date night",
     "Daiquiri Ice",
     "Rainbow Sherbet",
     "Rainbow Swirl"] 
-var seasonalFlavors = ["America's Birthday Cake",
+const seasonalFlavors = ["America's Birthday Cake",
     "Baseball Nut®",
     "Blueberry Cheesecake",
     "Bourbon Street Pecan Pie",
@@ -286,7 +286,7 @@ var seasonalFlavors = ["America's Birthday Cake",
     "made with M&M's®",
     "Heath®",
     "Mango Tango",]
-var regionalFlavors = ["Pink Bubblegum",
+const regionalFlavors = ["Pink Bubblegum",
     "Caramel Macchiato",
     "York Peppermint Pattie",
     "Cotton Candy",
@@ -311,8 +311,43 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
+function getRandomFlavors(orig_flavs, new_flavs, seas_flavs, reg_flavs){
 
-    /*code here*/
+    // Number of flavors
+    const num_orig_flavs = orig_flavs.length;
+    const num_new_flavs = new_flavs.length;
+    const num_seas_flavs = seas_flavs.length;
+    const num_rev_flavs = reg_flavs.length;
+    const total_num_flavs = num_orig_flavs + num_new_flavs + num_seas_flavs + num_rev_flavs;
 
+    // Combine all of the flavors into a single array for ease of random indexing
+    const all_flavs = [...orig_flavs, ...new_flavs, ...seas_flavs, ...reg_flavs];
+
+    // Create new array to store all randomly chosen flavors
+    const randomly_chosen_flavs = [];
+
+    // (31 corresponds to the total number of flavors we want to be on menu at one time)
+    for (let i = 0; randomly_chosen_flavs.length < 31; i++) {
+
+        console.log(`Choosing rand flavor iteration: ${i}`);
+        console.log(`Total Num Flavors: ${total_num_flavs}`);
+
+        // Randomly choose an index in range [0, total_num_flavs)
+        const rand_num = Math.random(); // randomly chosen (from uniform distribution) in range: [0,1)
+        const rand_index = Math.floor(rand_num * total_num_flavs); // [0, total_num_flavs)
+
+        // Randomly choose a flavor
+        const rand_flav = all_flavs[rand_index];  // randomly chosen flavor from all flavors
+
+        // Ensure that random flav is not already chosen:
+        if (randomly_chosen_flavs.includes(rand_flav))
+            console.log('Flavor already on menu!');
+        else 
+            randomly_chosen_flavs.push(rand_flav);
+    }
+
+    return randomly_chosen_flavs;
 }
+console.log('*********Stretch-Question 2:*********');
+console.log(getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors));
+console.log('*************************************');
