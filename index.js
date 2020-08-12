@@ -329,9 +329,6 @@ function getRandomFlavors(orig_flavs, new_flavs, seas_flavs, reg_flavs){
     // (31 corresponds to the total number of flavors we want to be on menu at one time)
     for (let i = 0; randomly_chosen_flavs.length < 31; i++) {
 
-        console.log(`Choosing rand flavor iteration: ${i}`);
-        console.log(`Total Num Flavors: ${total_num_flavs}`);
-
         // Randomly choose an index in range [0, total_num_flavs)
         const rand_num = Math.random(); // randomly chosen (from uniform distribution) in range: [0,1)
         const rand_index = Math.floor(rand_num * total_num_flavs); // [0, total_num_flavs)
