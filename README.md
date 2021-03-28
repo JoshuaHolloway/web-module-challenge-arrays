@@ -1,7 +1,3 @@
-# (Josh)
-* Pull Request URL:
-    * https://github.com/JoshuaHolloway/web-module-challenge-arrays/pull/1
-
 ## Advanced CSS and Intro to JavaScript
 
 ## Arrays
@@ -21,22 +17,16 @@ Your challenge today will be to work with their array of ice cream flavors to ac
 
 ### Task 1: Set up Project
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
+1. Fork the repo
+2. Clone your forked version of the repo
+3. cd into your repo and create a branch with your first and last name
+4. open the terminal in your vs code and type `npm install`
+5. next type `npm run test:watch` in your terminal
+6. Complete your work making regular commits, once you have all your tests passing and you are ready to submit your work please see canvas for instructions on how to submit
 
 ### Task 2: MVP
 
 Find the file `index.js` and complete the tasks until your returns look like the expected returns. Do not use any of the forbidden methods!
-
-### Task 2b: Exit Ticket
-Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/38ztAXr6mzpDqSfXn/BGqHXsWCL8s6oB).
-
-
-The completion of these questions is mandatory for MVP. However, passing the quiz doesn't affect your standing as a Lambda School student whatsoever. This is Lambda School testing itself! Please answer honestly and to the best of your ability without using external references.
 
 ### Task 3: Stretch
 
@@ -56,8 +46,5 @@ Make sure you are invoking your function after defining and wrapping a console.l
 
 ## Submission format
 
-Follow these steps for completing your project.
+Please see canvas for cohort specific submission instructions
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request.**
-- [ ] Add your team lead as a reviewer on the pull-request
-- [ ] Your team lead will count the project as complete by merging the branch back into master
