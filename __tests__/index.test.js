@@ -124,6 +124,7 @@ describe('removeLastFlavor', ()=>{
           ]);
     })
 });
+
 describe('getFlavorByIndex', ()=>{
     it('getFlavorByIndex returns string at index', ()=>{
         expect(functions.getFlavorByIndex(originalFlavors, 2)).toBe("Burgundy Cherry");
@@ -167,15 +168,15 @@ describe('removeFlavorByName', ()=>{
     })
 });
 
-describe('filterByWord', ()=>{
-    it('filterByWord returns a new array items containing word', ()=>{
-        expect(functions.filterByWord(originalFlavors, 'Chocolate')).toEqual([
-            'Chocolate',
-            'Chocolate Almond',
-            'Chocolate Chip',
-            'Chocolate Fudge',
-            'Chocolate Mint',
-            'Chocolate Ribbon'
-          ]);
-    })
-});
+// describe('filterByWord', ()=>{
+//     it('filterByWord returns a new array items containing word', ()=>{
+//         expect(functions.filterByWord(originalFlavors, 'Chocolate')).toEqual([
+//             'Chocolate',
+//             'Chocolate Almond',
+//             'Chocolate Chip',
+//             'Chocolate Fudge',
+//             'Chocolate Mint',
+//             'Chocolate Ribbon'
+//           ]);
+//     })
+// });

@@ -45,13 +45,9 @@ Use the copy function below to do the following:
     2. Return a copy of the received array  
 */
 
-function copy(/*your code here*/){
-    /*your code here*/
+function copy(arr){
+    return arr.map(x => x);
 }    
-
-
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Confirm that an array is exactly 31 flavors. Your function should accept:
@@ -64,8 +60,11 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
-   /*your code here*/
+function is31Flavors(arr){
+    const len = arr.length;
+    const expected_num_flavors = 31;
+    if (len == expected_num_flavors)    return true;
+    else                                return false;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -81,8 +80,9 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-   /*your code here*/
+function addFlavor(arr, new_flavor){
+    arr.unshift(new_flavor);
+    return arr;
 }
 
 
@@ -97,8 +97,9 @@ Use the removeLastFlavor function below to do the following:
     For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
-   /*your code here*/
+function removeLastFlavor(arr){
+    arr.pop();
+    return arr;
 }
 
 
@@ -114,9 +115,7 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
-    /*your code here*/
-}
+const getFlavorByIndex = (arr, index) => arr[index];
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -134,10 +133,17 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-    /*your code here*/
-}
+const removeFlavorByName = (arr, value) => {
+    
+    // Get the index corresponding to the value:
+    const index = arr.indexOf(value);
+    console.log(`index = ${index}`);
 
+    // Remove the element corresponding to index from the array:
+    const num_elems_to_remove = 1;
+    arr.splice(index, num_elems_to_remove);
+    return arr;
+};
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -160,8 +166,16 @@ Use the filterByWord function below to do the following:
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
-    /*your code here*/
+function filterByWord(arr, word){
+
+    let new_arr = [];
+    // checks every item in the array for a given string
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].includes(word))
+            new_arr.push(arr[i]);
+    }
+    // returns a new array called filteredArray with just these values
+    return new_arr;
 }
 
 
@@ -176,9 +190,27 @@ Use the getAverageWordLength function below to do the following:
 
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
+function getAverageWordLength(arr){
+    // returns the average number of words in an array. 
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+    // create counter to count total number of chars
+    let count = 0;
+
+    // loop over all the flavors
+    for (let i=0; i < arr.length; ++i) {
+        // Break the 
+        const broken = arr[i].split(' ');
+
+        // Count number of words in each element
+        const num_words = broken.length;
+
+        // Add number of words to running counter
+        count += num_words;
+    }
+
+    // Compute average by dividing total number of words by number of array elements
+    const average_num_words = count / arr.length;
+    return average_num_words;
 }
 
 
@@ -195,8 +227,40 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
+
+function getRandomFlavors(orig_flavs, new_flavs, seas_flavs, reg_flavs){
+
+    // Number of flavors
+    const num_orig_flavs = orig_flavs.length;
+    const num_new_flavs = new_flavs.length;
+    const num_seas_flavs = seas_flavs.length;
+    const num_rev_flavs = reg_flavs.length;
+    const total_num_flavs = num_orig_flavs + num_new_flavs + num_seas_flavs + num_rev_flavs;
+
+    // Combine all of the flavors into a single array for ease of random indexing
+    const all_flavs = [...orig_flavs, ...new_flavs, ...seas_flavs, ...reg_flavs];
+
+    // Create new array to store all randomly chosen flavors
+    const randomly_chosen_flavs = [];
+
+    // (31 corresponds to the total number of flavors we want to be on menu at one time)
+    for (let i = 0; randomly_chosen_flavs.length < 31; i++) {
+
+        // Randomly choose an index in range [0, total_num_flavs)
+        const rand_num = Math.random(); // randomly chosen (from uniform distribution) in range: [0,1)
+        const rand_index = Math.floor(rand_num * total_num_flavs); // [0, total_num_flavs)
+
+        // Randomly choose a flavor
+        const rand_flav = all_flavs[rand_index];  // randomly chosen flavor from all flavors
+
+        // Ensure that random flav is not already chosen:
+        if (randomly_chosen_flavs.includes(rand_flav))
+            console.log('Flavor already on menu!');
+        else 
+            randomly_chosen_flavs.push(rand_flav);
+    }
+
+    return randomly_chosen_flavs;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
